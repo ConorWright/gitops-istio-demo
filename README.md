@@ -31,3 +31,7 @@ Ignore the warnings, this will be fixed in a future version of helm.
 Username is `admin`
 
 `kubectl get pods -l app.kubernetes.io/name=argocd-server -o name | cut -d'/' -f 2`
+
+## Getting ArgoCD to self-manage
+
+`helm template apps/argo-cd | kubectl apply -f -`
