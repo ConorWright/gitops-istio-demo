@@ -1,0 +1,2 @@
+# Ignore this local charts dir as it will cache our dependencies
+charts/

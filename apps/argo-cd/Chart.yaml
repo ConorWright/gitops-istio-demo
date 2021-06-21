@@ -1,0 +1,6 @@
+# Uses Helm v3 to render the chart
+# This will be rendered using helm template and applied with kubectl
+
+apiVersion: v2
+name: root
+version: 1.0.0
