@@ -34,7 +34,7 @@ Ignore the warnings, this will be fixed in a future version of helm.
 
 Username is `admin`
 
-`kubectl get pods -n argocd -l app.kubernetes.io/name=argocd-server -o name | cut -d'/' -f 2`
+`kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d`
 
 ## Getting ArgoCD to self-manage
 
