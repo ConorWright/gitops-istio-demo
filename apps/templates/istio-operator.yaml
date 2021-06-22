@@ -13,7 +13,7 @@ spec:
     namespace: istio-operator
   project: default
   source:
-    chart: istio-operator
+    # chart: istio-operator
     helm:
     parameters:
       - name: enableCRDTemplates
