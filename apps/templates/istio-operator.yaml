@@ -27,7 +27,7 @@ spec:
           value: 'istio-operator'
         - name: 'istioNamespace'
           value: 'istio-system'
-    repoURL: https://github.com/istio/istio/tree/master/manifests/charts/base
+    repoURL: https://github.com/istio/istio/tree/master/manifests/charts
     targetRevision: 1.10.1
     path: apps/
   syncPolicy:
