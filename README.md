@@ -7,30 +7,34 @@
 * helm
 * istioctl
 
+### Create the namespaces
+
+`kubectl apply -f namespaces/`
+
 ## Create a Chart.lock file
 
 ```bash
 helm repo add argo-cd https://argoproj.github.io/argo-helm
-helm dep update infra/charts/argo-cd/
+helm dep update charts/argo-cd/
 ```
 
 ## Bootstrap ArgoCD
 
-Later this will manage itself
+Later this will manage itself.
 
-`helm install argo-cd infra/charts/argo-cd/`
+`helm install -n argocd argo-cd charts/argo-cd/`
 
 Ignore the warnings, this will be fixed in a future version of helm.
 
 ## Access the UI
 
-`kubectl port-forward svc/argo-cd-argocd-server 3333:443`
+`kubectl port-forward -n argocd svc/argo-cd-argocd-server 3333:443`
 
 ## Logging in
 
 Username is `admin`
 
-`kubectl get pods -l app.kubernetes.io/name=argocd-server -o name | cut -d'/' -f 2`
+`kubectl get pods -n argocd -l app.kubernetes.io/name=argocd-server -o name | cut -d'/' -f 2`
 
 ## Getting ArgoCD to self-manage
 

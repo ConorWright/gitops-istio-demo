@@ -10,7 +10,7 @@ spec:
     namespace: default
   project: default
   source:
-    path: apps/argo-cd
+    path: apps/
     repoURL: https://github.com/ConorWright/gitops-istio-demo.git
     targetRevision: HEAD
   syncPolicy:
