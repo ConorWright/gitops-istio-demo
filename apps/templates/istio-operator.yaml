@@ -15,9 +15,9 @@ spec:
   source:
     # chart: istio-operator
     helm:
-    parameters:
-      - name: enableCRDTemplates
-        value: 'true'
+      parameters:
+        - name: enableCRDTemplates
+          value: 'true'
     repoURL: https://github.com/istio/istio/
     targetRevision: 1.7.0
     path: manifests/charts/istio-operator
