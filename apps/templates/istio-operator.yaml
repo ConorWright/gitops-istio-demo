@@ -15,22 +15,19 @@ spec:
   source:
     chart: istio-operator
     helm:
-      values: |
-        pushgateway:
-          enabled: false
-      parameters:
-        - name: 'hub'
-          value: 'docker.io/istio'
-        - name: 'tag'
-          value: '1.10.1'
-        - name: 'operatorNamespace'
-          value: 'istio-operator'
-        - name: 'istioNamespace'
-          value: 'istio-system'
-    repoURL: https://github.com/istio/istio/tree/master/manifests/charts
+    parameters:
+      - name: enableCRDTemplates
+        value: 'true'
+    repoURL: https://github.com/istio/istio/
     targetRevision: 1.10.1
-    path: apps/
+    path: manifests/charts/istio-operator
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+ignoreDifferences:
+  - group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    jsonPointers:
+      - /metadata/labels
+      - /spec/names/shortNames
