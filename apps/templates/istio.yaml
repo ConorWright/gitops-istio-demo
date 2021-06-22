@@ -10,7 +10,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/speedwing/eks-argocd-bootstrap.git
+    repoURL: https://github.com/ConorWright/gitops-istio-demo.git
     targetRevision: HEAD
     path: apps/
   destination:
