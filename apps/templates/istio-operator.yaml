@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: istio-operator
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: '-2'
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: istio-system
+  project: default
+  source:
+    chart: istio
+    helm:
+      values: |
+        pushgateway:
+          enabled: false
+      parameters:
+        - name: 'hub'
+          value: 'docker.io/istio'
+        - name: 'tag'
+          value: '1.10.1'
+        - name: 'operatorNamespace'
+          value: 'istio-operator'
+        - name: 'istioNamespace'
+          value: 'istio-system'
+    repoURL: https://github.com/istio/istio.git
+    targetRevision: 1.10.1
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

@@ -38,4 +38,8 @@ Username is `admin`
 
 ## Getting ArgoCD to self-manage
 
-`helm template apps/argo-cd | kubectl apply -f -`
+`helm template apps/ | kubectl apply -f -`
+
+Once argocd is running you can delete the secret created by helm
+
+`kubectl delete secret -l owner=helm,name=argo-cd -n argocd`
