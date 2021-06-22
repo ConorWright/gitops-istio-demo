@@ -2,7 +2,7 @@ argo-cd:
   installCRDs: false # Required for Helm v3
   global:
     image:
-      tag: v1.8.1 # To get latest version, default is 1.7.x
+      tag: v2.0.3 # To get latest version, default is 1.7.x
   dex:
     enabled: false # Used for external auth providers
   server:
