@@ -10,10 +10,10 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: istio-system
+    namespace: istio-operator
   project: default
   source:
-    chart: istio
+    chart: istio-operator
     helm:
       values: |
         pushgateway:
@@ -29,6 +29,7 @@ spec:
           value: 'istio-system'
     repoURL: https://github.com/istio/istio.git
     targetRevision: 1.10.1
+    path: apps/
   syncPolicy:
     automated:
       prune: true
