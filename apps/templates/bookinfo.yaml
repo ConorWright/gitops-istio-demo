@@ -11,8 +11,8 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    repoURL: https://github.com/istio/istio.git
-    path: samples/bookinfo/platform/kube/bookinfo
+    repoURL: https://github.com/ConorWright/gitops-istio-demo.git
+    path: bookinfo
     targetRevision: master
   syncPolicy:
     automated:
