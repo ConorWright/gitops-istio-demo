@@ -7,6 +7,17 @@
 * helm
 * istioctl
 
+### Setting up minikube
+
+`minikube start --memory=8192mb --cpus=4`
+
+### Installing istio
+
+```bash
+minikube addons enable istio-provisioner
+minikube addons enable istio
+```
+
 ### Create the namespaces
 
 `kubectl apply -f namespaces/`
@@ -43,3 +54,7 @@ Username is `admin`
 Once argocd is running you can delete the secret created by helm
 
 `kubectl delete secret -l owner=helm,name=argo-cd -n argocd`
+
+## Get the istio endpoint
+
+`kubectl get svc -n istio-system istio-ingressgateway`
