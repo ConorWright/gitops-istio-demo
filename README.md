@@ -47,6 +47,8 @@ Username is `admin`
 
 `kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d`
 
+Password can be changed with: `argocd account update-password`
+
 ## Getting ArgoCD to self-manage
 
 `helm template apps/ | kubectl apply -f -`
@@ -58,3 +60,10 @@ Once argocd is running you can delete the secret created by helm
 ## Get the istio endpoint
 
 `kubectl get svc -n istio-system istio-ingressgateway`
+
+## Adding more clusters
+
+```bash
+argocd cluster add
+argocd cluster list
+```
