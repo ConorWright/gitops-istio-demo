@@ -12,7 +12,8 @@ spec:
   project: default
   source:
     repoURL: https://github.com/istio/istio.git
-    path: samples/bookinfo/platform/kube/bookinfo
+    path: samples/bookinfo/platform/kube
+    file: bookinfo.yaml
     targetRevision: HEAD
   syncPolicy:
     automated:
