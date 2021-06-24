@@ -120,5 +120,5 @@ argocd cluster list
 minikube delete
 
 # If using EKS
-eksctl delete cluster --name gitops-istio
+eksctl delete cluster --name gitops-istio --region us-west-2
 ```
