@@ -89,6 +89,7 @@ export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -
 
 export INGRESS_HOST=$(minikube ip)
 
+# You can access the endpoint for this in the browzer
 export GATEWAY_URL=$INGRESS_HOST:$INGRESS_PORT
 
 # In a separate window
@@ -110,4 +111,14 @@ istioctl dashboard kiali
 ```bash
 argocd cluster add
 argocd cluster list
+```
+
+## Cleaning up
+
+```bash
+# If using minikube
+minikube delete
+
+# If using EKS
+eksctl delete cluster --name gitops-istio
 ```
