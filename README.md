@@ -6,17 +6,39 @@
 * kubectl
 * helm
 * istioctl
+* jq
+* awscli (optional)
+* eksctl (optional)
 
 ### Setting up minikube
 
 `minikube start --memory=8192mb --cpus=4`
 
+### Setting up EKS
+
+Set up a cluster in AWS using the console or IaaC.
+
+`eksctl create cluster -f cluster/cluster.yaml`
+
+Get your kubeconfig with:
+
+`aws eks --region <region-code> update-kubeconfig --name <cluster_name>`
+
+**NOTE:** If you use `eksctl` to make your cluster it will do it for you.
+
 ### Installing istio
 
 ```bash
-minikube addons enable istio-provisioner
-minikube addons enable istio
+istioctl install --set profile=demo -y
+
+# In a seperate folder
+git clone git@github.com:istio/istio.git
+
+# This will install kiali, grafana prometheus etc
+kubectl apply -f samples/addons
 ```
+
+**NOTE:** If you get errors with kiali, run the kubectl apply again. This will be fixed in a later version of istio.
 
 ### Create the namespaces
 
@@ -35,7 +57,7 @@ Later this will manage itself.
 
 `helm install -n argocd argo-cd charts/argo-cd/`
 
-Ignore the warnings, this will be fixed in a future version of helm.
+**NOTE:** Ignore the warnings, this will be fixed in a future version of helm.
 
 ## Access the UI
 
@@ -57,9 +79,31 @@ Once argocd is running you can delete the secret created by helm
 
 `kubectl delete secret -l owner=helm,name=argo-cd -n argocd`
 
-## Get the istio endpoint
+## Getting the cluster endpoint
 
-`kubectl get svc -n istio-system istio-ingressgateway`
+```bash
+# K8s dashboard
+minikube dashboard
+
+export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].nodePort}')
+
+export INGRESS_HOST=$(minikube ip)
+
+export GATEWAY_URL=$INGRESS_HOST:$INGRESS_PORT
+
+# In a separate window
+minikube tunnel
+```
+
+## Accessing the dashboards
+
+```bash
+# K8s dashboard
+minikube dashboard
+
+# Kiali
+istioctl dashboard kiali
+```
 
 ## Adding more clusters
 
