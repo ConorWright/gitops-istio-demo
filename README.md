@@ -82,9 +82,6 @@ Once argocd is running you can delete the secret created by helm
 ## Getting the cluster endpoint
 
 ```bash
-# K8s dashboard
-minikube dashboard
-
 export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].nodePort}')
 
 export INGRESS_HOST=$(minikube ip)
