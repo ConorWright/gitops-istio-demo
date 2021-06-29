@@ -91,6 +91,9 @@ export GATEWAY_URL=$INGRESS_HOST:$INGRESS_PORT
 
 # In a separate window
 minikube tunnel
+
+# Get the external ip from aws
+kubectl get svc istio-ingressgateway -n istio-system
 ```
 
 ## Accessing the dashboards
