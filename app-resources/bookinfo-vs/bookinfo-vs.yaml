@@ -35,7 +35,7 @@ spec:
   - route:
     - destination:
         host: ratings
-        subset: v2
+        subset: v1
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
