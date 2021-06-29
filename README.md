@@ -16,7 +16,7 @@
 
 ### Setting up EKS
 
-Set up a cluster in AWS using the console or IaaC.
+Set up a cluster in AWS using the console or IaaC. The below command takes about 25 mins to complete.
 
 `eksctl create cluster -f cluster/cluster.yaml`
 
@@ -35,7 +35,7 @@ istioctl install --set profile=demo -y
 git clone git@github.com:istio/istio.git
 
 # This will install kiali, grafana prometheus etc
-kubectl apply -f samples/addons
+kubectl apply -f istio/samples/addons
 ```
 
 **NOTE:** If you get errors with kiali, run the kubectl apply again. This will be fixed in a later version of istio.
