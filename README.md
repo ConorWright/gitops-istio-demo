@@ -92,7 +92,7 @@ export GATEWAY_URL=$INGRESS_HOST:$INGRESS_PORT
 # In a separate window
 minikube tunnel
 
-# Get the external ip from aws
+# Get the external ip which looks like a hostname from aws. Default port is 80.
 kubectl get svc istio-ingressgateway -n istio-system
 ```
 
@@ -102,7 +102,7 @@ kubectl get svc istio-ingressgateway -n istio-system
 # K8s dashboard
 minikube dashboard
 
-# Kiali
+# kiali, grafana, prometheus, jaeger
 istioctl dashboard kiali
 ```
 
